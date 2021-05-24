@@ -29,6 +29,14 @@ RUN bin/rake db:migrate
 
 RUN bin/rake assets:precompile
 
+COPY requirements.txt requirements.txt
+
+RUN pip install --no-cache -r requirements.txt
+
 EXPOSE 3000
 
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "rails", "app.br", "-b", "0.0.0.0"]
+
+COPY . .
+
+
